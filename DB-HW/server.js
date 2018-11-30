@@ -19,20 +19,7 @@ app.get('/', function(req,res,next){
 
   
   // console.log('Starting to edit page');
-	var context ={};
-	mysql.pool.query('SELECT * FROM workouts', function(err, rows, fields){
-
-    if(err){
-      console.log("error");
-      next(err);
-      return;
-    }
-
-    context.workouts = rows;
-    console.log("RESULTS: " + context.workouts);
-    res.render('home', context);
-
-	});
+  var context ={};
 
 //edit page
   if(req.query['Edit']){
@@ -60,6 +47,20 @@ app.get('/', function(req,res,next){
     return;
     });
   }
+
+  mysql.pool.query('SELECT * FROM workouts', function(err, rows, fields){
+
+    if(err){
+      console.log("error");
+      next(err);
+      return;
+    }
+
+    context.workouts = rows;
+    console.log("RESULTS: " + context.workouts);
+    res.render('home', context);
+  });
+
 });
 
 
