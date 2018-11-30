@@ -1,0 +1,8 @@
+table {
+	border-style: solid;
+
+}
+th, tr, td {
+	border-style: solid;
+	border-width: thin;
+	font-weight: normal;

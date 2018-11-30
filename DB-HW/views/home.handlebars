@@ -1,0 +1,67 @@
+
+<form action="/" method=post>
+	<fieldset>
+		<!-- <legend>User input</legend> -->
+		<label>Name:
+			<input type="text" name="name" size="30" maxlength="100">
+		</label><br>
+		<label>Reps:
+			<input type="number" name="reps">	
+		</label><br>
+		<label>Weight:
+			<input type="number" name="weight">
+		</label><br>
+		<label>Date:
+			<input type="date" name="date">
+		</label><br>
+		<label>Unit: 
+			<label><input type="radio" name="unit" value="labs">lbs</label>
+			<label><input type="radio" name="unit" value="kg">kg</label>
+		</label><br>
+	  	<label>
+	  		<input type="submit" name="Insert">
+	  	</label>
+	</fieldset>
+</form>
+
+
+<table>
+	<thead>
+		<tr>
+			
+			<th>name</th>
+			<th>reps</th>
+			<th>weight</th>
+			<th>date</th>
+			<th>unit</th>
+			<th></th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		{{#each workouts}}
+		<tr>
+			<td>{{this.name}}</td>
+			<td>{{this.reps}}</td>
+			<td>{{this.weight}}</td>
+			<td>{{moment this.date format="YYYY-MM-DD"}}</td>
+			<td>{{this.unit}}</td>
+			<td>
+				<form action="/" method="get">
+					<input type="hidden" name="id" value={{this.id}}>
+					<input type="submit" name="Edit" class="editButton" value="edit">
+				</form>
+
+				
+			</td>
+			<td>
+				<form action="/" method="post">
+					<input type = "hidden" name="id" value={{this.id}}>
+					<input type="submit" name="Delete" class="deleteButton" value="Delete">
+				</form>
+			</td>
+
+		</tr>
+		{{/each}}
+	</tbody>
+</table>
